@@ -1,5 +1,5 @@
 <h1>Pagepeel for Contao 3</h1>
-This plugin allows you to create a pagepeel effect using javascript and flash. 
+This plugin allows you to create a pagepeel effect in Contao 3 using javascript and flash. 
 It's based on the free jquery-pagepeel from smartredfox. 
 The contao version completely rewritten in MooTools.
 
