@@ -28,7 +28,6 @@
 $GLOBALS['TL_LANG']['tl_module']['cp_pagepeel']             = array('PagePeel', 'Erstellen Sie Eselsohr-Kampagnen auf Ihrer Webseite.');
 $GLOBALS['TL_LANG']['tl_module']['cp_pagepeel_imgsmall']    = array('Vorschaubild', 'Bitte wählen Sie ein Vorschaubild aus, die animierte Ecke wird automatisch darüber gelegt. Dieses Bild sollte 75px x 75px groß sein.');
 $GLOBALS['TL_LANG']['tl_module']['cp_pagepeel_imgbig']      = array('Kampagnen-Bild', 'Bitte wählen Sie ein Bild für die Kampagne aus, die animierte Ecke wird automatisch darüber gelegt. Dieses Bild sollte 500px x 500px groß sein.');
-
 $GLOBALS['TL_LANG']['tl_module']['cp_pagepeel_url']         = array('URL', 'Bitte geben Sie die URL (http://...) Ihres Kampagnen-Links an.');
 
 

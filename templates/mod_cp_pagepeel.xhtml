@@ -5,10 +5,12 @@
         $('jcornerBig').setStyle('top','0px');
         $('jcornerSmall').setStyle('top','-1000px');
     }
+    
     function sizedown987(){
         $('jcornerSmall').setStyle('top','0px');
         $('jcornerBig').setStyle('top','-1000px');
     }
+    
     window.addEvent('domready', function () {
         var peel = new PagePeel({
                 jumpTo: escape('<?php echo $this->url; ?>'),
