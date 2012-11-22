@@ -1,0 +1,4 @@
+#jcornerBig,#jcornerSmall { position:absolute; z-index:9999;right:0px;top:0px;}
+#jcornerBig { width:650px;height:650px;}
+#jcornerBigObject {outline:none; }
+#jcornerSmall {width:100px;height:100px;}
