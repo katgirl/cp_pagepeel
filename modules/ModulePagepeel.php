@@ -73,6 +73,7 @@ class ModulePagepeel extends \Module
 		
 		return parent::generate();
 	}
+	
 
 	/**
 	 * Generate module
