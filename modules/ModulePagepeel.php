@@ -1,20 +1,15 @@
-<?php 
+<?php
 
 /**
  * Contao Open Source CMS
- * Copyright (C) 2005-2011 Leo Feyer
- *
- * Formerly known as TYPOlight Open Source CMS.
  * 
- * Modul Visitors File - Frontend
- *
- * PHP version 5
- * @copyright  CLICKPRESS Internetagentur
- * @author     Stefan Schulz-Lauterbach
- * @package    cp_pagepeel 
- * @license    LGPL 
- * @filesource
+ * Copyright (C) 2005-2012 Leo Feyer
+ * 
+ * @package News
+ * @link    http://contao.org
+ * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  */
+
 
 /**
  * Run in a custom namespace, so the class can be replaced
@@ -27,7 +22,7 @@ namespace Clickpress\Pagepeel;
  *
  * @copyright  CLICKPRESS Internetagentur 
  * @author     Stefan Schulz-Lauterbach <ssl@clickpress.de> 
- * @package    Controller
+ * @package    cp_pagepeel
  */
 class ModulePagepeel extends \Module
 {
