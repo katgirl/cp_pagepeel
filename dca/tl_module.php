@@ -21,7 +21,7 @@
  * PHP version 5
  * @copyright  CLICKPRESS Internetagentur 
  * @author     Stefan Schulz-Lauterbach <ssl@clickpress.de> 
- * @package    cp_pagepeel 
+ * @package    cp_PagePeel 
  * @license    LGPL 
  * @filesource
  */
@@ -30,7 +30,7 @@
  * Table tl_content 
  */
 $this->loadLanguageFile('tl_content');
-
+$GLOBALS['TL_DCA']['tl_module']['config']['onload_callback'] = array(array('tl_pagepeel', 'showJsLibraryHint'));
 $GLOBALS['TL_DCA']['tl_module']['palettes']['cp_pagepeel'] = '{type_legend},name,type;{config_legend},cp_pagepeel_imgsmall,cp_pagepeel_imgbig;{redirect_legend},cp_pagepeel_url,cp_pagepeel_target;{protected_legend:hide},protected;{expert_legend:hide},guests';
 
 //echo '<pre>';print_r($GLOBALS['TL_DCA']['tl_module']['palettes']);echo '</pre>';
@@ -43,7 +43,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['cp_pagepeel_imgsmall'] = array
 	'exclude'                 => true,
     'inputType'               => 'fileTree',
     'eval'                    => array('files'=>true,'filesOnly'=>true,'extensions'=>'gif,jpg,png','fieldType'=>'radio','tl_class'=>'clr'),
-    'sql'                     => "varchar(255) NOT NULL default ''"	
+    'sql'  => "binary(16) NULL" 
 );
 $GLOBALS['TL_DCA']['tl_module']['fields']['cp_pagepeel_imgbig'] = array
 (
@@ -51,7 +51,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['cp_pagepeel_imgbig'] = array
 	'exclude'                 => true,
     'inputType'               => 'fileTree',
     'eval'                    => array('files'=>true,'filesOnly'=>true,'extensions'=>'gif,jpg,png','fieldType'=>'radio','tl_class'=>'clr'),
-    'sql'                     => "varchar(255) NOT NULL default ''"	
+    'sql'  => "binary(16) NULL" 	
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['cp_pagepeel_url'] = array
@@ -64,7 +64,8 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['cp_pagepeel_url'] = array
 	'wizard' => array
 	(
 		array('tl_pagepeel', 'pagePicker')
-	)
+	),
+	'sql'                     => "varchar(255) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['cp_pagepeel_target'] = array
@@ -72,7 +73,8 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['cp_pagepeel_target'] = array
 	'label'                   => &$GLOBALS['TL_LANG']['MSC']['target'],
 	'exclude'                 => true,
 	'inputType'               => 'checkbox',
-	'eval'                    => array('tl_class'=>'w50 m12')
+	'eval'                    => array('tl_class'=>'w50 m12'),
+	'sql'					  => "char(1) NOT NULL default ''"
 );
 
 
@@ -82,7 +84,8 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['cp_pagepeel_rel'] = array
 	'exclude'                 => true,
 	'search'                  => true,
 	'inputType'               => 'text',
-	'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50')
+	'eval'                    => array('maxlength'=>64, 'tl_class'=>'w50'),
+	'sql'					  => "varchar(64) NOT NULL default ''"
 );
 $GLOBALS['TL_DCA']['tl_module']['fields']['url']['label'] = &$GLOBALS['TL_LANG']['tl_module']['cp_pagepeel_url'];
 
@@ -101,13 +104,42 @@ class tl_pagepeel extends Backend
 {
 	/**
 	 * Return the link picker wizard
-	 * @param DataContainer
+	 * @param \DataContainer
 	 * @return string
 	 */
 	public function pagePicker(DataContainer $dc)
 	{
-		return ' ' . $this->generateImage('pickpage.gif', $GLOBALS['TL_LANG']['MSC']['pagepicker'], 'style="vertical-align:top;cursor:pointer" onclick="Backend.pickPage(\'ctrl_' . $dc->inputName . '\')"');
+		return ' <a href="contao/page.php?do='.Input::get('do').'&amp;table='.$dc->table.'&amp;field='.$dc->field.'&amp;value='.str_replace(array('{{link_url::', '}}'), '', $dc->value).'" title="'.specialchars($GLOBALS['TL_LANG']['MSC']['pagepicker']).'" onclick="Backend.getScrollOffset();Backend.openModalSelector({\'width\':768,\'title\':\''.specialchars(str_replace("'", "\\'", $GLOBALS['TL_LANG']['MOD']['page'][0])).'\',\'url\':this.href,\'id\':\''.$dc->field.'\',\'tag\':\'ctrl_'.$dc->field . ((Input::get('act') == 'editAll') ? '_' . $dc->id : '').'\',\'self\':this});return false">' . Image::getHtml('pickpage.gif', $GLOBALS['TL_LANG']['MSC']['pagepicker'], 'style="vertical-align:top;cursor:pointer"') . '</a>';
 	}
+	
+
+	/**
+	 * Show a hint if a JavaScript library needs to be included in the page layout
+	 * @param object
+	 */
+	public function showJsLibraryHint($dc)
+	{
+		if ($_POST || Input::get('act') != 'edit')
+		{
+			return;
+		}
+
+		$objModule = ModuleModel::findByPk($dc->id);
+
+		if ($objModule === null)
+		{
+		echo 'null' . $dc->id;
+			return;
+		}
+
+		switch ($objModule->type)
+		{
+			case 'cp_pagepeel':
+				Message::addInfo(sprintf($GLOBALS['TL_LANG']['tl_module']['includeLibrary'], 'Mootools'));
+				break;
+		}
+	}
+	
 }
 
 ?>

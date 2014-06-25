@@ -23,15 +23,17 @@
  * PHP version 5
  * @copyright  CLICKPRESS Internetagentur 
  * @author     Stefan Schulz-Lauterbach <ssl@clickpress.de> 
- * @package    cp_pagepeel 
+ * @package    cp_PagePeel 
  * @license    LGPL 
  * @filesource
  */
 
 
 /**
- * Front end modules
- */
+ * -------------------------------------------------------------------------
+ * FRONT END MODULES
+ * -------------------------------------------------------------------------
+ */ 
 
 array_insert($GLOBALS['FE_MOD']['miscellaneous'], 9, array
 (

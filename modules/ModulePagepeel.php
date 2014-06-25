@@ -1,15 +1,20 @@
-<?php
+<?php 
 
 /**
  * Contao Open Source CMS
+ * Copyright (C) 2005-2011 Leo Feyer
+ *
+ * Formerly known as TYPOlight Open Source CMS.
  * 
- * Copyright (C) 2005-2012 Leo Feyer
- * 
- * @package News
- * @link    http://contao.org
- * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
+ * Modul Visitors File - Frontend
+ *
+ * PHP version 5
+ * @copyright  CLICKPRESS Internetagentur
+ * @author     Stefan Schulz-Lauterbach
+ * @package    cp_pagepeel 
+ * @license    LGPL 
+ * @filesource
  */
-
 
 /**
  * Run in a custom namespace, so the class can be replaced
@@ -22,7 +27,7 @@ namespace Clickpress\Pagepeel;
  *
  * @copyright  CLICKPRESS Internetagentur 
  * @author     Stefan Schulz-Lauterbach <ssl@clickpress.de> 
- * @package    cp_pagepeel
+ * @package    Controller
  */
 class ModulePagepeel extends \Module
 {
@@ -43,6 +48,7 @@ class ModulePagepeel extends \Module
 		if (TL_MODE == 'BE')
 		{
 			$objTemplate = new \BackendTemplate('be_wildcard');
+
 			$objTemplate->wildcard = '### PAGE PEEL ###';
 			$objTemplate->title = $this->name;
 			
@@ -55,37 +61,34 @@ class ModulePagepeel extends \Module
 			return $objTemplate->parse();
 		}
 
-		if (!is_numeric($this->cp_pagepeel_imgsmall) || !is_numeric($this->cp_pagepeel_imgbig))
-		{
-			return '<p class="error">'.$GLOBALS['TL_LANG']['ERR']['version2format'].'</p>';
-		}
-		
 		$objFile = \FilesModel::findByPk($this->cp_pagepeel_imgsmall); 
 		$this->cp_pagepeel_imgsmall = $objFile->path; 
-		
+
 		$objFile = \FilesModel::findByPk($this->cp_pagepeel_imgbig); 
 		$this->cp_pagepeel_imgbig = $objFile->path; 
 		
 		return parent::generate();
 	}
-	
 
 	/**
 	 * Generate module
 	 */
 	protected function compile()
-	{		
+	{
+		
+		
+		
 		// Assign template variables
 		$this->Template->id			=	$this->id;
 		$this->Template->url		=	(!empty($this->cp_pagepeel_url)) ? $this->cp_pagepeel_url : '/';
 		//$this->Template->rel		=	$this->cp_pagepeel_rel;
 		$this->Template->target		=	($this->cp_pagepeel_target != 1) ? 'false' : 'true';
-		$this->Template->imgsmall	= 	($this->cp_pagepeel_imgsmall) ? $this->cp_pagepeel_imgsmall : '/system/modules/cp_pagepeel/html/small.png';
-		$this->Template->imgbig		= 	($this->cp_pagepeel_imgbig) ? $this->cp_pagepeel_imgbig : '/system/modules/cp_pagepeel/html/large.png';
+		$this->Template->imgsmall	= 	($this->cp_pagepeel_imgsmall) ? $this->cp_pagepeel_imgsmall : 'system/modules/cp_pagepeel/assets/small.png';
+		$this->Template->imgbig		= 	($this->cp_pagepeel_imgbig) ? $this->cp_pagepeel_imgbig : 'system/modules/cp_pagepeel/assets/large.png';
 
 		// Add Peelscript to the Frontend
-		$GLOBALS['TL_CSS'][] = 'system/modules/cp_pagepeel/html/cp_pagepeel.css';
-		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/cp_pagepeel/html/peel.js';			
+		$GLOBALS['TL_CSS'][] = 'system/modules/cp_pagepeel/assets/cp_pagepeel.css';
+		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/cp_pagepeel/assets/peel.js';			
 
 	}
 }

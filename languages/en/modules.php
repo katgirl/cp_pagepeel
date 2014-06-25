@@ -23,7 +23,7 @@
  * PHP version 5
  * @copyright  CLICKPRESS Internetagentur 
  * @author     Stefan Schulz-Lauterbach <ssl@clickpress.de> 
- * @package    cp_pagepeel 
+ * @package    cp_PagePeel 
  * @license    LGPL 
  * @filesource
  */

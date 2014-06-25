@@ -23,7 +23,7 @@
  * PHP version 5
  * @copyright  CLICKPRESS Internetagentur 
  * @author     Stefan Schulz-Lauterbach <ssl@clickpress.de> 
- * @package    cp_pagepeel 
+ * @package    cp_PagePeel 
  * @license    LGPL 
  * @filesource
  */
@@ -40,6 +40,5 @@ $GLOBALS['TL_LANG']['MOD']['cp_pagepeel'] = array('Page Peel', 'Erstellen Sie Es
  * Front end modules
  */
 $GLOBALS['TL_LANG']['FMD']['cp_pagepeel'] = array('Page Peel', 'Erstellen Sie Eselsohr-Kampagnen auf Ihrer Webseite.');
-
 
 ?>

@@ -16,7 +16,7 @@
  * PHP version 5
  * @copyright  CLICKPRESS Internetagentur 
  * @author     Stefan Schulz-Lauterbach <ssl@clickpress.de> 
- * @package    cp_pagepeel 
+ * @package    cp_PagePeel 
  * @license    LGPL 
  * @filesource
  */
@@ -28,7 +28,8 @@
 $GLOBALS['TL_LANG']['tl_module']['cp_pagepeel']             = array('PagePeel', 'Create pagepeel campaigns on your website.Create pagepeel campaigns on your website.');
 $GLOBALS['TL_LANG']['tl_module']['cp_pagepeel_imgsmall']    = array('Preview image', 'Please choose a preview image. It should have 75 x 75px. The lowerleft corner will not be visible.');
 $GLOBALS['TL_LANG']['tl_module']['cp_pagepeel_imgbig']      = array('Large image', 'Please choose the large image. It should have 500 x 500px. The lowerleft corner will not be visible');
+
 $GLOBALS['TL_LANG']['tl_module']['cp_pagepeel_url']         = array('URL', 'Please choose the page to which visitors will be redirected when clicking the pagepeel');
 
-
+$GLOBALS['TL_LANG']['tl_module']['includeLibrary']			= 'Important: This module needs %s!';
 ?>
