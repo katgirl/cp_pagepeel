@@ -1,0 +1,31 @@
+
+{
+    "name": "kirsten-roschanski/contao-pagepeel",
+    "type": "contao-module",
+    "description": "Contao Open Source CMS extension pagepeel from Kester Mielke <mail@kester-mielke.de>",
+    "keywords": ["contao", "pagepeel"],
+    "license": "LGPL",
+    "authors": [
+        {
+            "name":"Stefan Schulz-Lauterbach",
+            "email":"ssl@clickpress.de",
+            "role":"Developer"
+        },        
+        {
+            "name":"Kirsten Roschanski",
+            "email":"git@kirsten-roschanski.de",
+            "role":"Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4,<7",
+        "contao/core": ">=3.2,<4"
+    },
+    "extra": {
+        "contao": {
+            "sources": {
+                "": "system/modules/cp_pagepeel"
+            }
+        }
+    }
+}
