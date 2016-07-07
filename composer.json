@@ -2,7 +2,7 @@
 {
     "name": "kirsten-roschanski/contao-pagepeel",
     "type": "contao-module",
-    "description": "Contao Open Source CMS extension pagepeel from Kester Mielke <mail@kester-mielke.de>",
+    "description": "Contao Open Source CMS extension pagepeel from Stefan Schulz-Lauterbach <ssl@clickpress.de>",
     "keywords": ["contao", "pagepeel"],
     "license": "LGPL",
     "authors": [
